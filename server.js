@@ -1,27 +1,26 @@
 //static route
 const express = require('express');
+const swaggerDocs = require('./swaggerConfig');
+
 const app = express();
 const PORT = 3000;
 
 //middleware
+
+app.use(express.json());
+// innit swagger
+swaggerDocs(app);
+
 app.get('/', (req, res) => {
-    res.send(' Hello, I am Express.js beginner ! See you soon ');
+    res.send(' Hello, I am Express.js beginner ! See you soon  There');
 });
 
-// app.get('/', (req, res) => {
-//     res.send(' This is the Home page of my web app. ');
-// })
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
+    console.log(`Swagger docs is available at http://localhost:${PORT}/api-docs`);
 });
 
-
-
-//🛠️ Step 1: Setting Up a Basic REST API
-//Define API Endpoints and Implement CRUD Operations
-//REST API
-// const express = require('express');
-// const app = express();
+// // REST API
 // app.use(express.json()); // Middleware to parse JSON data
 
 // let users = [
@@ -61,5 +60,3 @@ app.listen(PORT, () => {
 //     users = users.filter(u => u.id !== parseInt(req.params.id));
 //     res.status(204).send();
 // });
-
-// app.listen(3000, () => console.log('Server running on port 3000'));
